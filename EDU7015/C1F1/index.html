@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDU7015 - C1:F1 | 5 Instructional Strategies for Higher Education</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&family=Anton:wght@400&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Oswald', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 25%, #330066 50%, #0a0a0a 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, #ff0080 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, #00ffff 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, #ff3300 0%, transparent 50%),
+                radial-gradient(circle at 90% 90%, #33ff00 0%, transparent 50%);
+            opacity: 0.1;
+            z-index: -1;
+            animation: neonPulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonPulse {
+            0% { opacity: 0.1; }
+            100% { opacity: 0.2; }
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #ff0080, #00ffff);
+            color: #000;
+            text-decoration: none;
+            border-radius: 25px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 128, 0.5);
+        }
+
+        .back-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.7);
+        }
+
+        .infographic-container {
+            max-width: 800px;
+            margin: 60px auto 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #ff0080, #00ffff, #ff3300, #33ff00) 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 
+                0 0 50px rgba(255, 0, 255, 0.3),
+                0 0 100px rgba(0, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .infographic-container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #ff0080, #00ffff, #ff3300, #33ff00);
+            border-radius: 20px;
+            z-index: -1;
+            animation: borderRotate 4s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .header {
+            background: linear-gradient(45deg, rgba(255, 0, 128, 0.8), rgba(0, 255, 255, 0.6));
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid #33ff00;
+        }
+
+        .course-info {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            color: #33ff00;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(51, 255, 0, 0.5);
+        }
+
+        .main-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.8),
+                3px 3px 0px #000;
+            background: linear-gradient(45deg, #ff0080, #00ffff, #ff3300, #33ff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 3s ease-in-out infinite alternate;
+            margin-bottom: 10px;
+        }
+
+        @keyframes textGlow {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.3); }
+        }
+
+        .subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: #00ffff;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
+        .strategies-grid {
+            padding: 40px 20px;
+            display: grid;
+            gap: 30px;
+            grid-template-columns: 1fr;
+        }
+
+        .strategy-patch {
+            background: linear-gradient(135deg, rgba(255, 51, 0, 0.8), rgba(0, 255, 255, 0.6));
+            backdrop-filter: blur(10px);
+            border: 2px solid;
+            border-image: linear-gradient(135deg, #33ff00, #ff0080) 1;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 
+                0 0 30px rgba(255, 51, 0, 0.3),
+                0 0 60px rgba(0, 255, 255, 0.2);
+            position: relative;
+            margin: 0 20px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .strategy-patch::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .strategy-patch:hover::before {
+            left: 100%;
+        }
+
+        .strategy-patch:hover {
+            transform: scale(1.02);
+            box-shadow: 
+                0 0 40px rgba(255, 51, 0, 0.5),
+                0 0 80px rgba(0, 255, 255, 0.3);
+        }
+
+        .strategy-patch:nth-child(1) {
+            transform: rotate(-1deg);
+            margin-left: 10px;
+        }
+
+        .strategy-patch:nth-child(2) {
+            transform: rotate(1.5deg);
+            margin-right: 10px;
+        }
+
+        .strategy-patch:nth-child(3) {
+            transform: rotate(-0.5deg);
+            margin-left: 15px;
+        }
+
+        .strategy-patch:nth-child(4) {
+            transform: rotate(1deg);
+            margin-right: 15px;
+        }
+
+        .strategy-patch:nth-child(5) {
+            transform: rotate(-1.2deg);
+            margin-left: 5px;
+        }
+
+        .strategy-patch:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .strategy-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid #33ff00;
+            padding-bottom: 8px;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .strategy-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .strategy-icon {
+            font-size: 3rem;
+            filter: drop-shadow(0 0 10px rgba(51, 255, 0, 0.8));
+            animation: iconPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes iconPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .strategy-description {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-weight: 400;
+            text-align: center;
+            color: #ffffff;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .academic-icons-section {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            text-align: center;
+            border-top: 3px solid #ff0080;
+        }
+
+        .academic-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .academic-icons span {
+            filter: drop-shadow(0 0 15px rgba(255, 0, 128, 0.8));
+            animation: iconFloat 3s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.2s);
+        }
+
+        .academic-icons span:nth-child(1) { --i: 0; }
+        .academic-icons span:nth-child(2) { --i: 1; }
+        .academic-icons span:nth-child(3) { --i: 2; }
+        .academic-icons span:nth-child(4) { --i: 3; }
+        .academic-icons span:nth-child(5) { --i: 4; }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .reference-section {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 25px;
+            border-top: 3px solid #00ffff;
+        }
+
+        .reference-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            color: #00ffff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .reference-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: #ccc;
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        .student-info {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            text-align: center;
+            border-top: 3px solid #33ff00;
+        }
+
+        .student-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            color: #33ff00;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(51, 255, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .infographic-container {
+                margin: 80px 10px 0;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .strategies-grid {
+                padding: 20px 10px;
+            }
+            
+            .strategy-patch {
+                margin: 0 10px;
+                transform: none !important;
+            }
+            
+            .academic-icons {
+                gap: 20px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../../index.html" class="back-link">← Back to Portfolio</a>
+    
+    <div class="infographic-container">
+        <div class="header">
+            <div class="course-info">EDU7015 - C1:F1</div>
+            <div class="main-title">5 Instructional Strategies</div>
+            <div class="subtitle">for Higher Education</div>
+        </div>
+        
+        <div class="strategies-grid">
+            <div class="strategy-patch">
+                <div class="strategy-header">
+                    <div class="strategy-icon">📚</div>
+                    <div class="strategy-title">Book Talks</div>
+                </div>
+                <div class="strategy-description">Students share and discuss texts with peers, connecting outside sources to course learning and collaborative knowledge building. Excellent for graduate seminars with extensive reading lists, this strategy provides opportunities for students to explore specialized topics while learning from diverse perspectives and scholarly interests within their cohort.</div>
+            </div>
+            
+            <div class="strategy-patch">
+                <div class="strategy-header">
+                    <div class="strategy-icon">💭</div>
+                    <div class="strategy-title">Think-Pair-Share</div>
+                </div>
+                <div class="strategy-description">Three-step collaborative process: individual reflection, paired discussion, then group sharing for active learning. This cooperative learning approach promotes knowledge construction while serving as a low-stakes assessment tool. Students gain new perspectives on topics while reflecting on their own understanding and developing critical thinking skills through structured peer interaction.</div>
+            </div>
+            
+            <div class="strategy-patch">
+                <div class="strategy-header">
+                    <div class="strategy-icon">🏃‍♂️</div>
+                    <div class="strategy-title">Four Sides</div>
+                </div>
+                <div class="strategy-description">Kinesthetic learning where students physically move to corners representing their agreement levels with statements. Particularly effective in social sciences like education, sociology, and political science, this strategy encourages reserved students to participate non-verbally while helping all students visualize the spectrum of opinions and positions within their peer group on complex issues.</div>
+            </div>
+            
+            <div class="strategy-patch">
+                <div class="strategy-header">
+                    <div class="strategy-icon">⚡</div>
+                    <div class="strategy-title">Mini Lessons</div>
+                </div>
+                <div class="strategy-description">Short 5-15 minute focused lessons that scaffold complex topics or preview upcoming content for better comprehension. These targeted instruction bursts can teach specific skills, establish context, or generate interest in larger topics. Excellent for breaking down challenging material into manageable chunks and can be strategically repeated throughout units to reinforce understanding at key moments.</div>
+            </div>
+            
+            <div class="strategy-patch">
+                <div class="strategy-header">
+                    <div class="strategy-icon">🏗️</div>
+                    <div class="strategy-title">Scaffolding</div>
+                </div>
+                <div class="strategy-description">Gradual release model guiding students from instructor-led practice to independent mastery step-by-step. This approach helps students learn new processes or improve existing methods through progressive responsibility transfer. The instructor models each step multiple times, demonstrating best practices while students gradually take on larger roles until achieving full independence in executing complex tasks.</div>
+            </div>
+        </div>
+        
+        <div class="academic-icons-section">
+            <div class="academic-icons">
+                <span>🎓</span>
+                <span>📖</span>
+                <span>🏛️</span>
+                <span>✏️</span>
+                <span>🎯</span>
+            </div>
+        </div>
+        
+        <div class="reference-section">
+            <div class="reference-title">Reference</div>
+            <div class="reference-text">
+                Wiater Branco, C. (Ed.). (n.d.). <em>100 Instructional strategies</em>.
+            </div>
+        </div>
+        
+        <div class="student-info">
+            <div class="student-name">Jessica Wilkie</div>
+        </div>
+    </div>
+</body>
+</html>
