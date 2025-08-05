@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Emotional Learning Assessment at MVCC</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .title {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .mindmap {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 600px;
+            margin-top: 40px;
+        }
+        
+        .central-node {
+            position: absolute;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+        
+        .branch {
+            position: absolute;
+            display: flex;
+            align-items: center;
+        }
+        
+        .branch-line {
+            height: 3px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .branch-node {
+            background: white;
+            border: 3px solid #667eea;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            color: #2c3e50;
+            min-width: 150px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .branch-node:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            background: #f8f9fa;
+        }
+        
+        .sub-items {
+            display: none;
+            position: absolute;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            width: 250px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 15;
+        }
+        
+        .sub-items.show {
+            display: block;
+        }
+        
+        .sub-items ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .sub-items li {
+            padding: 8px 0;
+            color: #555;
+            border-bottom: 1px solid #f1f3f4;
+            font-size: 0.9em;
+        }
+        
+        .sub-items li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Branch positioning */
+        .branch-1 { top: 50px; left: 300px; }
+        .branch-2 { top: 200px; right: 100px; }
+        .branch-3 { bottom: 200px; right: 100px; }
+        .branch-4 { bottom: 50px; left: 300px; }
+        
+        .line-1 { width: 150px; }
+        .line-2 { width: 120px; }
+        .line-3 { width: 120px; }
+        .line-4 { width: 150px; }
+        
+        .instructions {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .mindmap {
+                position: static;
+                display: block;
+                min-height: auto;
+            }
+            
+            .central-node {
+                position: relative;
+                margin: 0 auto 30px;
+                width: 150px;
+                height: 150px;
+                font-size: 1em;
+            }
+            
+            .branch {
+                position: relative;
+                display: block;
+                margin: 20px 0;
+                text-align: center;
+            }
+            
+            .branch-line {
+                display: none;
+            }
+            
+            .branch-node {
+                display: inline-block;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Social Emotional Learning Assessment at MVCC</h1>
+            <div class="subtitle">
+                <strong>Current Status:</strong> Mohawk Valley Community College does not yet collect and analyze data to assess SEL. However, many pieces of data already collected <em>can</em> be filtered through a new assessment lens to begin to map SEL to student outcomes and campus engagement.
+            </div>
+        </div>
+        
+        <div class="mindmap">
+            <div class="central-node">
+                SEL Data Collection & Analysis
+            </div>
+            
+            <div class="branch branch-1">
+                <div class="branch-line line-1"></div>
+                <div class="branch-node" onclick="toggleSubItems('direct-assessment')">
+                    Direct Assessment Data
+                    <div class="sub-items" id="direct-assessment">
+                        <ul>
+                            <li>Self-report surveys measuring core SEL competencies</li>
+                            <li>Behavioral observations in classroom settings</li>
+                            <li>Portfolio assessments with reflection components</li>
+                            <li>CASEL-aligned assessment instruments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="branch branch-2">
+                <div class="branch-line line-2"></div>
+                <div class="branch-node" onclick="toggleSubItems('academic-engagement')">
+                    Academic & Engagement Indicators
+                    <div class="sub-items" id="academic-engagement">
+                        <ul>
+                            <li>Course completion and persistence rates</li>
+                            <li>Student organization participation data</li>
+                            <li>Attendance patterns and engagement metrics</li>
+                            <li>Leadership position involvement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="branch branch-3">
+                <div class="branch-line line-3"></div>
+                <div class="branch-node" onclick="toggleSubItems('support-services')">
+                    Support Services Data
+                    <div class="sub-items" id="support-services">
+                        <ul>
+                            <li>Counseling and student services utilization</li>
+                            <li>Peer tutoring and mentoring participation</li>
+                            <li>Conflict resolution and disciplinary data</li>
+                            <li>Help-seeking behavior patterns</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="branch branch-4">
+                <div class="branch-line line-4"></div>
+                <div class="branch-node" onclick="toggleSubItems('longitudinal-outcomes')">
+                    Longitudinal & Outcome Data
+                    <div class="sub-items" id="longitudinal-outcomes">
+                        <ul>
+                            <li>Transfer and employment outcomes</li>
+                            <li>Employer feedback on soft skills</li>
+                            <li>Alumni surveys tracking long-term outcomes</li>
+                            <li>Workplace readiness indicators</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            Click on any branch to view specific data types and examples
+        </div>
+    </div>
+    
+    <script>
+        function toggleSubItems(id) {
+            // Hide all other sub-items
+            const allSubItems = document.querySelectorAll('.sub-items');
+            allSubItems.forEach(item => {
+                if (item.id !== id) {
+                    item.classList.remove('show');
+                }
+            });
+            
+            // Toggle the clicked sub-item
+            const subItems = document.getElementById(id);
+            subItems.classList.toggle('show');
+        }
+        
+        // Close sub-items when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.branch-node')) {
+                const allSubItems = document.querySelectorAll('.sub-items');
+                allSubItems.forEach(item => {
+                    item.classList.remove('show');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
